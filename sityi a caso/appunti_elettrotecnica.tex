@@ -1,0 +1,417 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{a4paper, top=3cm, bottom=3cm, left=2.5cm, right=2.5cm}
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{hyperref}
+
+% Definizione per Teoremi e Definizioni per matchare lo stile del PDF
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Law}[section]
+
+% Setup dell'intestazione (Header e Footer) identica al PDF
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyhead[R]{Bandi Tommaso Felice}
+\fancyfoot[C]{\thepage}
+
+\begin{document}
+
+% ------ PAGINA DEL TITOLO ------
+\begin{titlepage}
+    \centering
+    \vspace*{4cm}
+    {\Huge \bfseries ELETTROTECNICA \par}
+    \vspace{1.5cm}
+    {\Large Bandi Tommaso Felice \par}
+    \vspace{0.5cm}
+    {\large 5 agosto 2023 \par}
+\end{titlepage}
+
+% ------ INDICE ------
+\tableofcontents
+\newpage
+
+% ------ CAPITOLO 1 ------
+\section{Introduzione al Corso ELETTROTECNICA}
+
+\subsection{Obiettivi dell'insegnamento}
+Il corso si propone di fornire agli studenti nozioni fondamentali di teoria dei circuiti e cenni di elettromagnetismo. Con l'obiettivo di far acquisire loro l'abilità di applicare le nozioni teoriche per la risoluzione dei problemi, in ambito dell'ingegneria dell'informazione e industriale, attraverso l'analisi ed i metodi risolutivi. Vengono inoltre fornite le metodologie deduttive dell'analisi matematica e fisica applicati a casi pratici dell'ingegneria.
+
+\subsection{Risultati di apprendimento attesi}
+\begin{itemize}
+    \item Conoscere cos'è un circuito elettrico ed i suoi componenti fondamentali.
+    \item Conoscere il concetto di modello circuitale e i suoi limiti di applicabilità.
+    \item Conoscere le leggi ed i teoremi per lo studio dei circuiti fondamentali (e limiti di validità), necessari per affrontare l'analisi di un circuito.
+    \item Comprendere il campo elettromagnetico nei circuiti elementari.
+    \item Comprendere il legame tra le leggi dei campi elettro-magnetici ed il modello circuitale nonché le principali applicazioni dei campi stessi.
+    \item Saper utilizzare le conoscenze acquisite per formulare e risolvere il problema dell'analisi di circuiti elettrici.
+    \item Essere in grado di interpretare in modo critico i risultati ottenuti.
+\end{itemize}
+
+\subsection{Argomenti trattati}
+\begin{enumerate}
+    \item \textbf{Introduzione. 1. Circuiti elettrici: cosa modella il fenomeno fisico.} 2. Il concetto di bipolo. 3. Le grandezze elettriche: tensione, corrente e potenza. 4. Unità di misura. Voltmetro e amperometro. 5. Leggi di Kirchhoff delle correnti e delle tensioni. 6. Potenza ed energia. Teorema di Tellegen.
+    
+    \item \textbf{Bipoli resistivi e circuiti adinamici.} 1. Il resistore ideale. 2. Bipoli attivi ed elementi passivi, generatori ideali di tensione e di corrente, corto circuito e circuito aperto. 3. Modelli di Thevenin (serie) e di Norton (parallelo). 
+    
+    \item \textbf{Bipoli lineari a più porte.} 1. Matrice di resistenza $R$, di conduttanza $G$, ed ibrida $H, H'$. 2. Potenza in un n-polo lineare. 3. Trasformatori ideali.
+    
+    \item \textbf{Analisi dei circuiti.} 1. Topologia di una rete. 2. Analisi nodale di circuiti (metodo dei potenziali ai nodi). 3. Modelli modificati. 4. Teorema della sovrapposizione degli effetti.
+\end{enumerate}
+
+\subsection{Prerequisiti}
+Matematica: Calcolo differenziale e integrale per funzioni di variabile reale. Algebra dei numeri complessi. Elementi di calcolo matriciale.\\
+Fisica: Potenza, Lavoro, energia.
+
+\newpage
+
+% ------ CAPITOLO 2 ------
+\section{Introduzione}
+\subsection{Vettori}
+\subsubsection{Definizione e norma euclidea}
+
+\begin{definition}[Vettori]
+Un vettore è una grandezza matematica multi-direzionale di norma, direzione e verso, può essere un vettore colonna o un vettore riga.
+\end{definition}
+
+In fisica un vettore descrive la posizione, quindi le coordinate in un punto in uno spazio n-dimensionale.
+La norma (norma euclidea, norma 2) di un vettore è la lunghezza del vettore stesso:
+\[
+||v|| = ||v||_2 = \sqrt{\sum_{i=1}^n v_i^2}
+\]
+
+\subsubsection{Prodotto scalare-vettore}
+Il prodotto tra uno scalare e un vettore dà come risultato un vettore multiplo del vettore primario:
+\[
+\alpha \cdot \vec{v} = \begin{bmatrix} \alpha v_1 \\ \alpha v_2 \\ \vdots \\ \alpha v_n \end{bmatrix}
+\]
+
+\subsubsection{Somma e differenza}
+La somma tra due vettori corrisponde a sommare le singole coordinate dei due vettori e graficamente può essere vista traslando il secondo vettore sulla punta del primo.
+La differenza tra due vettori corrisponde a sommare al primo vettore l'opposto del secondo. Graficamente si traccia partendo dalla punta del secondo vettore all'estremità del primo.
+
+\subsubsection{Versori e normalizzazione}
+\begin{definition}[Versore]
+Un versore è un vettore con norma unitaria:
+\[
+||v|| = 1
+\]
+\end{definition}
+Per normalizzare un vettore si divide il vettore per la sua norma.
+
+\subsubsection{Prodotto scalare (dot product)}
+Il prodotto scalare tra due vettori dà come risultato la somma del prodotto tra le singole componenti corrispondenti dei vettori:
+\[
+\vec{v} \cdot \vec{u} = \sum_{i=1}^n v_i u_i
+\]
+
+\subsubsection{Prodotto vettoriale}
+\begin{definition}[Prodotto vettoriale]
+Siano $\vec{u}, \vec{v}$ due vettori, allora il prodotto vettore $\vec{w} = \vec{u} \times \vec{v}$ ha:
+\begin{itemize}
+    \item Modulo: $||\vec{u} \times \vec{v}|| = ||u|| \cdot ||v|| \cdot \sin(\theta)$
+    \item Direzione: perpendicolare al piano su cui giacciono i due vettori
+    \item Verso: segue la regola della mano destra.
+\end{itemize}
+\end{definition}
+
+\newpage
+
+% ------ CAPITOLO 3 ------
+\section{Elettrostatica}
+\subsection{Carica e campo}
+\subsubsection{Definizione di elettromagnetismo}
+
+\begin{definition}[Elettromagnetismo]
+La branca della fisica classica che studia le cariche elettriche e i campi elettrici da esse generati.
+\end{definition}
+
+La carica è una caratteristica fondamentale della materia (ad esempio come la massa) ed è quantizzata, ciò significa che si trova in multipli interi della carica fondamentale dell'elettrone:
+\[
+e = -1.6 \cdot 10^{-19} \, \text{C}
+\]
+Per le dimensioni dei problemi è considerata buona come ipotesi che stiamo operando nel vuoto e le cariche sono considerabili puntiformi.
+
+\subsubsection{Legge di Coulomb}
+È fondamentale per studiare l'interazione tra le cariche puntiformi:
+\[
+\vec{F} = \frac{1}{4\pi\varepsilon_0} \frac{q_1 q_2}{r^2} \hat{u}_r
+\]
+In questa formula compare la costante dielettrica del vuoto che ha valore: $\varepsilon_0 = 8.854 \cdot 10^{-12} \, \text{F/m}$.
+Inoltre si dimostra come due cariche dello stesso segno si respingono e due cariche di segno opposto si attraggono.
+
+% NOTA PER L'UTENTE: Le immagini disegnate a mano non possono essere generate nativamente dal codice di testo LaTeX. 
+% Devi fare uno screenshot del disegno e salvarlo (es. come "coulomb.png"), poi de-commentare le righe qui sotto per inserirlo.
+\begin{figure}[h]
+    \centering
+    % \includegraphics[width=0.6\textwidth]{coulomb.png}
+    \caption{Legge di Coulomb}
+\end{figure}
+
+\subsubsection{Campo elettrico}
+\begin{definition}[Campo]
+Definisce l'influenza esercitata da una sorgente su uno spazio. Ci possono essere due tipologie di campo:
+\begin{itemize}
+    \item Campo scalare (es. Campo di temperature)
+    \item Campo vettoriale (es. Campo gravitazionale, elettrico)
+\end{itemize}
+\end{definition}
+
+\subsubsection{Linee di campo}
+\begin{definition}[Linee di campo]
+Le linee di campo sono l'insieme dei punti in cui un dato campo vettoriale è tangente.
+\end{definition}
+
+\begin{definition}[Campo Elettrico]
+Supponiamo di avere una carica $q$ che genera un campo elettrico $\vec{E}$.
+\[
+\vec{E} = \frac{\vec{F}}{q_0}
+\]
+\end{definition}
+
+\begin{definition}[Carica di prova]
+Un corpo puntiforme il cui campo può essere considerato esente di carica di prova se:
+\begin{itemize}
+    \item La carica è soggetta alla forza generata dalle altre cariche;
+    \item La carica non altera il campo elettrico totale.
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Campo Elettrico]
+Supponiamo di avere una carica $Q$ che genera un campo elettrico $\vec{E}$.
+\[
+\vec{E} = \frac{\vec{F}}{q_0}
+\]
+Indica il campo elettrico e dice se:
+\begin{itemize}
+    \item Stazionario: il campo non varia nel tempo, quindi la derivata parziale rispetto al tempo è nulla:
+    \[
+    \frac{\partial \vec{E}}{\partial t} = 0
+    \]
+    \item Quasi stazionario: il campo varia nel tempo molto lentamente rispetto alle variazioni interne al circuito, quindi la derivata parziale rispetto al tempo è molto prossima allo zero:
+    \[
+    \frac{\partial \vec{E}}{\partial t} \simeq 0
+    \]
+\end{itemize}
+\end{definition}
+
+Cosa genera un campo elettrico??
+Siccome vale la Legge di Coulomb:
+\[
+\vec{E} = \frac{\vec{F}}{q_0} = \frac{1}{4\pi\varepsilon_0} \frac{Q}{r^2} \hat{u}_r
+\]
+Quindi il campo elettrico generato da una carica puntiforme è diretto radialmente rispetto alla carica stessa e il verso dipende dal segno della carica:
+\begin{itemize}
+    \item Carica positiva $\implies$ radiale e uscente
+    \item Carica negativa $\implies$ radiale ed entrante
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    % \includegraphics[width=0.8\textwidth]{linee_di_campo.png}
+    \caption{Linee di campo, lineari di flusso}
+\end{figure}
+
+\newpage
+
+% ------ SEZIONE 3.2 ------
+\subsection{Tensione, flusso e corrente}
+\subsubsection{Tensione elettrica}
+\begin{itemize}
+    \item Poniamo la carica di prova in una regione di spazio in cui sia presente un campo elettrico $\vec{E}$
+    \item La carica di prova andrà a spostarsi lungo le linee di campo del campo elettrico $\vec{E}$
+    \item Il campo elettrico compie un lavoro sulla carica di prova $q$
+    \item Vogliamo calcolare il lavoro necessario per spostare la carica di prova $q$ in presenza del campo elettrico $\vec{E}$ lungo un generico percorso $\gamma$ (da $A$ a $B$).
+    \item Vogliamo spostarci da $A$ a $B$ lungo $\gamma$ e consideriamo varie spezzate abbastanza piccole da approssimare con una buona precisione la curva $\gamma$.
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    % \includegraphics[width=0.6\textwidth]{spostamento_carica.png}
+    \caption{Spostamento carica su linea curva}
+\end{figure}
+
+Il segno meno è da interpretare come lavoro in opposizione al campo elettrico, infatti questo è il lavoro che compiamo noi, non quello relativo allo spostamento della carica lungo la curva.
+\[
+L_{AB} = \int_A^B \vec{F} \cdot d\vec{s} = \int_A^B q \vec{E} \cdot d\vec{s} = q \int_A^B \vec{E} \cdot d\vec{s}
+\]
+
+Infine pensando al limite di lunghezze di spostamento molto piccole $\Delta s \to 0$ (limite che vedremo in Analisi 2)
+
+\[
+\Delta L = - \vec{F} \cdot d\vec{s} = - q \vec{E} \cdot d\vec{s}
+\]
+
+\begin{definition}[Tensione elettrica]
+Lungo una qualunque linea chiusa, la somma algebrica delle tensioni, prese con il segno opportuno in base al verso di percorrenza della maglia, è nulla.
+Valgono le relazioni:
+\[
+\oint_\gamma \vec{E} \cdot d\vec{s} = 0
+\]
+\end{definition}
+
+Quindi segue che:
+\[
+V_{AB} + V_{BA} = 0 \implies V_{AB} = -V_{BA}
+\]
+
+Dimostrazione della legge di Kirchhoff per le tensioni: è una generalizzazione del calcolo della tensione elettrica lungo un percorso da A a B. Il lavoro svolto per spostare la carica da A a B è:
+\[
+V_{AB} = \frac{L_{AB}}{q} = \int_A^B \vec{E} \cdot d\vec{s}
+\]
+
+\newpage
+
+\begin{figure}[h]
+    \centering
+    % \includegraphics[width=0.6\textwidth]{kirchhoff_tensioni.png}
+    \caption{Legge di Kirchhoff per le tensioni}
+\end{figure}
+
+Siccome il prodotto scalare:
+\[
+\vec{E} \cdot d\vec{s} = |\vec{E}| \cdot |d\vec{s}| \cos \theta
+\]
+Ora calcoliamo il lavoro sfruttando il fatto che possiamo portar fuori dall'integrale le costanti e che possiamo parametrizzare la curva in funzione di $t$:
+\[
+L_{AB} = \int_A^B -q \vec{E} \cdot d\vec{s} = -q \int_A^B \vec{E} \cdot d\vec{s} = -q \int_{t_A}^{t_B} \vec{E} \cdot \frac{d\vec{s}}{dt} dt = -q \int_{t_A}^{t_B} \vec{E} \cdot \vec{v} dt = W_B - W_A = -q(V_B - V_A)
+\]
+Dove abbiamo che:
+\begin{itemize}
+    \item $W$ è l'energia potenziale
+    \item $V_{A}$ e $V_{B}$ sono i \textit{potenziali elettrici} nei punti A e B
+    \item $V_{AB}$ è la \textit{differenza di potenziale}
+\end{itemize}
+
+Inoltre da questo si ricava che:
+\[
+V_{AB} = \int_A^B \vec{E} \cdot d\vec{s}
+\]
+
+Allora il lavoro non dipende dal percorso, ma solo dai punti A e B, quindi possiamo dire che il campo elettrico è un campo conservativo.
+Possiamo estendere questa dimostrazione anche al caso dei campi elettrici quasi stazionari. Consideriamo i due percorsi $\gamma_1$ e $\gamma_2$:
+Allora il lavoro rispettivo sarà:
+\[
+L_{\gamma_1} = -q (V_B - V_A), \quad L_{\gamma_2} = -q (V_A - V_B)
+\]
+Ora considero il percorso chiuso $\gamma = \gamma_1 + \gamma_2$ allora il lavoro totale su $\gamma$ è:
+\[
+L_\gamma = L_{\gamma_1} + L_{\gamma_2} = 0
+\]
+
+\newpage
+
+Quindi l'integrale di linea, su una linea chiusa (detto circuitazione) è:
+\[
+\oint_\gamma \vec{E} \cdot d\vec{s} = 0
+\]
+Di conseguenza la circuitazione e la tensione complessiva del campo elettrico lungo una linea chiusa sono nulle.
+
+\subsubsection{Flusso di un campo vettoriale}
+\begin{definition}[Flusso]
+Definiamo flusso di un campo $\vec{A}$ attraverso la superficie $S$ come: $A \cdot \hat{u}_n \, dS$
+\end{definition}
+
+\begin{figure}[h]
+    \centering
+    % \includegraphics[width=0.6\textwidth]{flusso.png}
+\end{figure}
+
+Approssimiamo il flusso $\Phi$ attraverso una superficie estesa $S$ come:
+\[
+\Phi(\vec{A}) = \int_S \vec{A} \cdot \hat{u}_n \, dS
+\]
+Dove $d\vec{S}$ sta a significare che in ogni piccola quadratino il campo elettrico può essere assunto come costante.
+Prendo il limite per $dS \to 0$ allora:
+\[
+\Phi(\vec{A}) = \int_S \vec{A} \cdot d\vec{S}
+\]
+
+Calcoliamo il flusso di $\vec{E}$ generato da una carica puntiforme attraverso una superficie sferica. Abbiamo che il raggio della sfera è $r$, e troviamo che il campo è:
+\[
+\vec{E} \cdot \hat{u}_n = |\vec{E}| = \frac{1}{4\pi\varepsilon_0} \frac{q}{r^2}
+\]
+
+Facendo i conti:
+\[
+\Phi(\vec{E}) = \oint_S \vec{E} \cdot d\vec{S} = \oint_S |\vec{E}| \, dS = \frac{1}{4\pi\varepsilon_0} \frac{q}{r^2} \oint_S dS = \frac{1}{4\pi\varepsilon_0} \frac{q}{r^2} 4\pi r^2 = \frac{q}{\varepsilon_0}
+\]
+
+\newpage
+
+\begin{theorem}[Legge di Gauss per il flusso del campo elettrico]
+\[
+\Phi(\vec{E}) = \frac{Q_{\text{int}}}{\varepsilon_0}
+\]
+\end{theorem}
+Possiamo generalizzare il risultato appena ottenuto a qualsiasi superficie in cui sono racchiuse le cariche.
+Dimostrazione aggiuntiva:
+
+\begin{figure}[h]
+    \centering
+    % \includegraphics[width=0.8\textwidth]{gauss_proof.png}
+\end{figure}
+
+\[
+\Phi(\vec{E}) = \oint_S \vec{E} \cdot \hat{u}_n \, dS = \oint_S \vec{E} \cdot d\vec{S} = \frac{q}{\varepsilon_0}
+\]
+
+\[
+d\vec{S} = \hat{u}_n \, dS, \quad \vec{E} = \frac{q}{4\pi\varepsilon_0 r^2} \hat{u}_r
+\]
+
+\[
+\vec{E} \cdot d\vec{S} = \frac{q}{4\pi\varepsilon_0 r^2} \hat{u}_r \cdot \hat{u}_n \, dS = \frac{q}{4\pi\varepsilon_0 r^2} \cos\theta \, dS
+\]
+
+Il flusso totale attraverso la sfera coincidente con la superficie chiusa:
+\[
+\oint_S \vec{E} \cdot d\vec{S} = \oint_S \frac{q}{4\pi\varepsilon_0 r^2} \cos\theta \, dS = \frac{q}{\varepsilon_0}
+\]
+
+\newpage
+
+\subsubsection{Corrente elettrica}
+\begin{definition}[Corrente elettrica]
+Definiamo corrente elettrica la quantità di carica che attraversa la superficie $S$ in un intervallo di tempo $\Delta t$:
+\[
+I = \frac{\Delta q}{\Delta t}
+\]
+\end{definition}
+
+Passando al limite per istanti infinitesimali:
+\[
+i(t) = \lim_{\Delta t \to 0} \frac{\Delta q}{\Delta t} = \frac{dq}{dt}
+\]
+
+La corrente quindi è una quantità scalare e ha unità di misura $[A] = [\text{C/s}]$.
+Ora diamo una definizione più rigorosa di corrente, consideriamo la seguente figura.
+
+\begin{figure}[h]
+    \centering
+    % \includegraphics[width=0.5\textwidth]{corrente_superficie.png}
+    \caption{Carica che attraversa una superficie S}
+\end{figure}
+
+La Quantità di carica che attraversa la superficie $S$ in un intervallo di tempo $dt$, dove $\hat{u}_n$ è la normale alla superficie, vale:
+\[
+dq = \rho \, dV = \rho (\vec{v} \cdot \hat{u}_n \, dt) \, dS
+\]
+
+Abbiamo che il vettore $\vec{J} = \rho \vec{v}$ è detto \textit{densità di corrente}.
+
+\begin{definition}[Densità di corrente]
+La corrente $I$ è il flusso del vettore densità di corrente $\vec{J}$ attraverso la superficie $S$:
+\[
+I = \int_S \vec{J} \cdot \hat{u}_n \, dS
+\]
+L'unità di misura di $J$ è $[\text{A/m}^2]$.
+\end{definition}
+
+\end{document}
