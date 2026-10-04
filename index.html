@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il Blog di Salvatore Rubbera</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVIGAZIONE -->
+    <nav>
+        <a href="index.html" class="logo">Salvo's Blog</a>
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">Chi Sono Io</a></li>
+            <li><a href="appunti.html">Appunti Polimi</a></li>
+            <li><a href="gpx.html">Tracce GPX</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO BENVENUTO -->
+    <section class="hero" style="padding-bottom: 2rem;">
+        <h1>Benvenuto nel mio Blog</h1>
+        <p>
+            Esplora il mio mondo: dagli appunti universitari di Ingegneria dell'Automazione alle mie avventure in montagna!
+        </p>
+    </section>
+
+    <!-- BLOCCHI PRINCIPALI -->
+    <div class="container" style="padding-top: 0;">
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); margin-bottom: 50px;">
+            
+            <a href="about.html" class="note-card" style="text-decoration: none; text-align: center;">
+                <i class="fas fa-user-astronaut" style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;"></i>
+                <h3>Chi Sono</h3>
+                <p>Scopri di più su di me, i miei studi e le mie passioni.</p>
+            </a>
+
+            <a href="appunti.html" class="note-card" style="text-decoration: none; text-align: center;">
+                <i class="fas fa-graduation-cap" style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;"></i>
+                <h3>Appunti Polimi</h3>
+                <p>Scarica i miei appunti, riassunti ed esercizi per gli esami.</p>
+            </a>
+
+            <a href="gpx.html" class="note-card" style="text-decoration: none; text-align: center;">
+                <i class="fas fa-mountain" style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;"></i>
+                <h3>Tracce GPX</h3>
+                <p>I miei percorsi in MTB e trekking da scaricare e provare.</p>
+            </a>
+
+        </div>
+    </div>
+
+</body>
+</html>
